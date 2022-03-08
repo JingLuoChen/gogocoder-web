@@ -62,11 +62,11 @@
                     time: '2022-01-08'
                 }, {
                     type: '后端',
-                    face: 917,
-                    questions: 1294,
-                    count: 8713,
-                    company: 217,
-                    time: '2022-01-02'
+                    face: 1135,
+                    questions: 1605,
+                    count: 11797,
+                    company: 264,
+                    time: '2022-02-22'
                 },]
             }
         }
