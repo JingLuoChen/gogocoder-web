@@ -28,7 +28,7 @@
             </div>
         </div>
         <div class="table-box">
-            <Table stripe size="large" :columns="columns" :data="dataList" :border="false" :loading="loading">
+            <Table stripe size="large" :columns="columns" :data="dataList" :border="false" :loading="loading" @on-row-click="goTodetail($event)">
                 <template slot-scope="{ row }" slot="questionName">
                     <div style="margin: 5px 0;">
                         <strong>{{ row.questionName }}</strong>
@@ -226,6 +226,10 @@
             viewCompany(companyList) {
                 this.tagList = companyList
                 this.isShowCompany = true
+            },
+            goTodetail(event) {
+                console.log(event, 'event')
+                this.$router.push({name: 'detail'});
             }
         }
     }

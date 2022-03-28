@@ -27,7 +27,8 @@ import brokeNews  from '../view/brokeNews/index';
 import resources  from '../view/resources/index';
 // 知识体系
 import knowSystem from '../view/knowSystem/index'
-
+// 问题详情
+import detail from '../view/detail/index'
 //定义routes路由的集合，数组类型
 const routes=[
     //单个路由均为对象类型，path代表的是路径，component代表组件
@@ -43,7 +44,8 @@ const routes=[
             {path:'/about', name: 'about', component: about},
             {path:'/brokeNews', name: 'brokeNews', component: brokeNews},
             {path:'/resources', name: 'resources', component: resources},
-            {path:'/knowSystem', name: 'knowSystem', component: knowSystem}
+            {path:'/knowSystem', name: 'knowSystem', component: knowSystem},
+            {path:'/detail', name: 'detail', component: detail}
         ]
     },
     {

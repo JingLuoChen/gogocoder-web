@@ -7,13 +7,7 @@
 <script>
 
 export default {
-  name: 'App',
-  data() {
-    return {
-    }
-  },
-  mounted() {
-  }
+  name: 'App'
 }
 </script>
 

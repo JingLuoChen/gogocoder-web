@@ -32,13 +32,24 @@
                         <!--                知识体系-->
                         <!--              </Menu-item>-->
                     </div>
-                    <div class="user" @click="goToLogin">
+                    <div v-if="!userName" class="user" @click="goToLogin">
                         登陆
+                    </div>
+                    <div v-else class="user">
+                        <Dropdown @on-click="goToOther">
+                            <a href="javascript:void(0)">
+                                {{ userName }}
+                                <Icon type="ios-arrow-down"></Icon>
+                            </a>
+                            <DropdownMenu slot="list">
+                                <DropdownItem name="logout">退出登陆</DropdownItem>
+                            </DropdownMenu>
+                        </Dropdown>
                     </div>
                 </Menu>
             </Header>
             <div style="height: 60px;"></div>
-            <Card :style="{border: '1px solid transparent', margin: '20px auto 0', background: '#fff', minHeight: 'calc(100% - 175px)', width: '1100px'}">
+            <Card class="card-style">
                 <keep-alive>
                     <router-view></router-view>
                 </keep-alive>
@@ -58,7 +69,8 @@
 export default {
     data() {
         return {
-            activeName: ''
+            activeName: '',
+            userName: '用户1234'
         }
     },
     mounted() {
@@ -71,6 +83,13 @@ export default {
         },
         goHome() {
             this.$router.push({name: 'home'});
+        },
+        goToOther(name) {
+            console.log(name, 'name')
+            switch (name) {
+                case 'logout':
+                    this.goToLogin();
+            }
         },
         goToLogin() {
             this.$router.push({name: 'login'});
@@ -116,6 +135,13 @@ export default {
         width: 100%;
         height: 100%;
     }
+    .card-style {
+        border: 1px solid transparent;
+        margin: 20px auto 0;
+        background: #fff;
+        min-height: calc(100% - 175px);
+        width: 1100px;
+    }
     .layout-nav{
     }
     .user {
@@ -123,6 +149,9 @@ export default {
         position: absolute;
         right: 50px;
         cursor: pointer;
+    }
+    .user a {
+        color: #fff;
     }
     .layout-footer-center{
         width: 100%;
