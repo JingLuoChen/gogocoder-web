@@ -11,6 +11,10 @@ VueRouter.prototype.push = function push(location) {
 }
 // 首页
 import index  from '../view/index/index';
+// 登陆
+import login from '../view/login/index';
+// 主页
+import home from '../view/home/index.vue';
 // 面经
 import face  from '../view/face/index';
 // 内推
@@ -27,14 +31,26 @@ import knowSystem from '../view/knowSystem/index'
 //定义routes路由的集合，数组类型
 const routes=[
     //单个路由均为对象类型，path代表的是路径，component代表组件
-    {path:'/', redirect:'home'},
-    {path:'/face', name: 'face', component: face},
-    {path:'/official', name: 'official', component: official},
-    {path:'/about', name: 'about', component: about},
-    {path:'/home', name: 'home', component: index},
-    {path:'/brokeNews', name: 'brokeNews', component: brokeNews},
-    {path:'/resources', name: 'resources', component: resources},
-    {path:'/knowSystem', name: 'knowSystem', component: knowSystem}
+    {
+        path:'/',
+        redirect:'/home',
+        name: '首页',
+        component: home,
+        children: [
+            {path:'/home', name: 'home', component: index},
+            {path:'/face', name: 'face', component: face},
+            {path:'/official', name: 'official', component: official},
+            {path:'/about', name: 'about', component: about},
+            {path:'/brokeNews', name: 'brokeNews', component: brokeNews},
+            {path:'/resources', name: 'resources', component: resources},
+            {path:'/knowSystem', name: 'knowSystem', component: knowSystem}
+        ]
+    },
+    {
+        path:'/login',
+        name: 'login',
+        component: login
+    }
 ]
 
 // 实例化VueRouter并将routes添加进去
